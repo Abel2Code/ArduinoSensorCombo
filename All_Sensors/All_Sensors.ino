@@ -66,7 +66,7 @@ void loop() {
 
   gyroSensorLoop();
 
-  ultrasonicSensorLoop()MM;
+  ultrasonicSensorLoop();
 }
 
 void attemptLog() {
