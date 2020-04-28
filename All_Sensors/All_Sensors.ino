@@ -53,6 +53,8 @@ void setup() {
 
   // Ultrasonic Sensor Setup
   ultrasonicSensorSetup();
+
+  Serial.println("Ball Switch Delta,Motion Delta,Ultrasonic Delta,AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ");
 }
 
 void loop() {
@@ -64,24 +66,34 @@ void loop() {
 
   gyroSensorLoop();
 
-  ultrasonicSensorLoop();
+  ultrasonicSensorLoop()MM;
 }
 
 void attemptLog() {
   time = millis();
   if(time - lastLogTime > LOG_TIME_DELAY) {
-    Serial.print("Ball Switch Delta: "); Serial.println(ballMax - ballMin);
-    Serial.print("Motion Delta: "); Serial.println(motionMax - motionMin);
-    Serial.print("Ultrasonic Delta: "); Serial.print(ultraMax - ultraMin); Serial.println(" cm");
-    
-    Serial.println("Gyro Deltas: ");
-    Serial.print("   AcX: "); Serial.println(AcXMax - AcXMin);
-    Serial.print("   AcY: "); Serial.println(AcYMax - AcYMin);
-    Serial.print("   AcZ: "); Serial.println(AcZMax - AcZMin);
-    Serial.print("   Tmp: "); Serial.println(TmpMax - TmpMin);  //equation for temperature in degrees C from datasheet
-    Serial.print("   GyX: "); Serial.println(GyXMax - GyXMin);
-    Serial.print("   GyY: "); Serial.println(GyYMax - GyYMin);
-    Serial.print("   GyZ: "); Serial.println(GyZMax - GyZMin);
+//    Serial.print("Ball Switch Delta: "); Serial.println(ballMax - ballMin);
+//    Serial.print("Motion Delta: "); Serial.println(motionMax - motionMin);
+//    Serial.print("Ultrasonic Delta: "); Serial.print(ultraMax - ultraMin); Serial.println(" cm");
+//    
+//    Serial.println("Gyro Deltas: ");
+//    Serial.print("   AcX: "); Serial.println(AcXMax - AcXMin);
+//    Serial.print("   AcY: "); Serial.println(AcYMax - AcYMin);
+//    Serial.print("   AcZ: "); Serial.println(AcZMax - AcZMin);
+//    Serial.print("   Tmp: "); Serial.println(TmpMax - TmpMin);  //equation for temperature in degrees C from datasheet
+//    Serial.print("   GyX: "); Serial.println(GyXMax - GyXMin);
+//    Serial.print("   GyY: "); Serial.println(GyYMax - GyYMin);
+//    Serial.print("   GyZ: "); Serial.println(GyZMax - GyZMin);
+      Serial.print(ballMax - ballMin);Serial.print(",");
+      Serial.print(motionMax - motionMin);Serial.print(",");
+      Serial.print(ultraMax - ultraMin);Serial.print(",");
+      Serial.print(AcXMax - AcXMin);Serial.print(",");
+      Serial.print(AcYMax - AcYMin);Serial.print(",");
+      Serial.print(AcZMax - AcZMin);Serial.print(",");
+      Serial.print(TmpMax - TmpMin);Serial.print(",");
+      Serial.print(GyXMax - GyXMin);Serial.print(",");
+      Serial.print(GyYMax - GyYMin);Serial.print(",");
+      Serial.print(GyZMax - GyZMin);Serial.println("");
 
     ballReset = true;
     gyroReset = true;
